@@ -8,9 +8,8 @@ oracle_conn = "oracle_demo_connection"
 
 with DAG(
     "oracle_upload_data",
-    start_date=datetime(2022, 1, 1),
+    schedule_interval=timedelta(minutes=3),
     max_active_runs=3,
-    schedule_interval=None,
     default_args={"oracle_conn_id": oracle_conn},
     catchup=False,
 ) as dag:
