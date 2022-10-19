@@ -19,7 +19,7 @@ with DAG(
     
     opr_create_tbl= OracleOperator(
         task_id='task_create_tbl',
-        sql='create table1 (a INT, b INT, c INT, d TIMESTAMP)',
+        sql='create table table1 (a INT, b INT, c INT, d TIMESTAMP)',
         autocommit=True)
   
     opr_insert = OracleOperator(
