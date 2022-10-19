@@ -19,7 +19,16 @@ with DAG(
     
     opr_create_tbl= OracleOperator(
         task_id='task_create_tbl',
-        sql='create table table1 (a INT, b INT, c INT, d TIMESTAMP)',
+        sql="""
+declare
+   c int;
+begin
+   select count(*) into c from user_tables where table_name = upper('table1');
+   if c = 0 then
+      execute immediate 'create table table1 (a INT, b INT, c INT, d TIMESTAMP)';
+   end if;
+end;
+        """,
         autocommit=True)
   
     opr_insert = OracleOperator(
