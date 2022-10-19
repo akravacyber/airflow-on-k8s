@@ -14,6 +14,7 @@ with DAG(
     max_active_runs=3,
     default_args={"oracle_conn_id": oracle_conn},
     catchup=False,
+    tags=['example', 'oracle', 'new']
 ) as dag:
     
     opr_create_tbl= OracleOperator(
