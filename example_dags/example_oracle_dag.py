@@ -24,7 +24,7 @@ with DAG(
   
     opr_insert = OracleOperator(
         task_id='task_insert_values',
-        sql='insert into table1 (a,b,c) values (1, 2, 3, CURRENT_TIMESTAMP)',
+        sql='insert into table1 (a, b, c, d) values (1, 2, 3, CURRENT_TIMESTAMP)',
         autocommit=True)
     
     opr_create_tbl >> opr_insert
