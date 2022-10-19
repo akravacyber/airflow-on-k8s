@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 oracle_conn = "oracle_demo_connection"
 
 with DAG(
-    "oracle_upload_data",
+    dag_id="oracle_upload_data",
+    start_date=datetime.utcnow(),
     schedule_interval=timedelta(minutes=3),
     max_active_runs=3,
     default_args={"oracle_conn_id": oracle_conn},
